@@ -1,10 +1,7 @@
 package com.masai.DTO;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Min;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,19 +22,12 @@ public class ProductDTO {
 
 	private Double salePrice;
 
-	private Double marketPrice;
-
 	private String color;
 
 	private String brand;
 
-	@Min(1)
 	private Integer quantity;
-
-	private String categoryName;
-
-	private String subCategory;
-
-	private String description;
+	
+	private String stockStatus;
 
 }

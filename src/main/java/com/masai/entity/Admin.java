@@ -36,7 +36,7 @@ public class Admin {
 
 	@NotBlank(message = "Last name can not be blank")
 	@NotNull(message = "Last name can not be null")
-	private String LastName;
+	private String lastName;
 
 	@Email(message = "Please provide a valid email address")
 	private String email;
@@ -63,7 +63,7 @@ public class Admin {
 			LocalDateTime dateRegistered) {
 		super();
 		this.firstName = firstName;
-		LastName = lastName;
+		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;

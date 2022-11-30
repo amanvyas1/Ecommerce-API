@@ -7,5 +7,6 @@ import com.masai.entity.CurrentAdminSession;
 
 @Repository
 public interface CurrentAdminSessionRepo extends JpaRepository<CurrentAdminSession, Integer>{
-
+	
+	public CurrentAdminSession findByKey(String key);
 }

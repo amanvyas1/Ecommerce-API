@@ -43,7 +43,7 @@ public class Customer {
 	
 	@NotBlank(message = "Last name can not be blank")
 	@NotNull(message = "Last name can not be null")
-	private String LastName;
+	private String lastName;
 	
 	@Email(message = "Please provide a valid email address")
 	private String email;
@@ -60,7 +60,7 @@ public class Customer {
 	
 	
 	@Valid
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Address> addresses=new ArrayList<>();
 	
 	@JsonIgnore

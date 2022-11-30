@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.masai.entity.CurrentCustomerSession;
 
 @Repository
-public interface CurrentCustomerSessionRepo extends JpaRepository<CurrentCustomerSession, Integer>{
+public interface CurrentCustomerSessionRepo extends JpaRepository<CurrentCustomerSession, Integer> {
+
+	public CurrentCustomerSession findByKey(String key);
 
 }

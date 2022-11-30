@@ -14,6 +14,19 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+	
+	
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ResponseEntity<MyErrorBean> validationExceptionHandler(MethodArgumentNotValidException manve) {
+		
+		MyErrorBean error = new MyErrorBean();
+		
+		error.setTimestamp(LocalDateTime.now());
+		error.setMessage("Validation error");
+		error.setDetails(manve.getBindingResult().getFieldError().getDefaultMessage());
+		
+		return new ResponseEntity<>(error, HttpStatus.NOT_ACCEPTABLE);
+	}
 
 	@ExceptionHandler(AdminException.class)
 	public ResponseEntity<MyErrorBean> adminExceptionHandler(AdminException ae, WebRequest wr) {
@@ -146,16 +159,5 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
 
-	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<MyErrorBean> validationExceptionHandler(MethodArgumentNotValidException manve) {
-		
-		MyErrorBean error = new MyErrorBean();
-		
-		error.setTimestamp(LocalDateTime.now());
-		error.setMessage("Validation error");
-		error.setDetails(manve.getBindingResult().getFieldError().getDefaultMessage());
-		
-		return new ResponseEntity<>(error, HttpStatus.NOT_ACCEPTABLE);
-	}
 
 }
