@@ -68,6 +68,10 @@ public class OrderServiceImpl implements OrderService {
 			throw new CartException("No product exist in cart");
 		}
 		
+		if(customer.get().getCart().getQuantity()==0) {
+			throw new CartException("No product exist in cart");
+		}
+		
 		List<ProductDTO> products = customer.get().getCart().getProducts();
 		for(ProductDTO p:products) {
 			Optional<Product> product = productRepo.findById(p.getProductId());
